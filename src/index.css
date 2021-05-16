@@ -21,6 +21,11 @@ span.theme {
   background-clip: text !important;
 }
 
+.buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /** Header **/
 
 header {
@@ -90,6 +95,10 @@ header .subtitle {
 .btn.regular {
   background-color: white;
   color: black;
+}
+
+.regular2 {
+  border: black 1.5px solid;
 }
 
 .btn.regular:hover{
