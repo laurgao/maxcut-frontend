@@ -4,13 +4,13 @@ import InputEdge from './components/InputEdge';
 import AddEdgeButton from './components/AddEdgeButton';
 import axios from 'axios';
 
-const templateEdge = [1, 2, 0.7];
+const templateEdge = [null, null, 1];
 
 function App() {
   const [res, setRes] = useState("")
   const [edgeIndexes, setEdgeIndexes] = useState([1, 2, 3]);
   const [numEdges, setNumEdges]  = useState(4);
-  const [edges, setEdges] = useState([[null, null, null], [null, null, null], [null, null, null]]); // because useEffect doesnt work i'll just hard code it based on the intial humber of edges
+  const [edges, setEdges] = useState([[null, null, 1], [null, null, 1], [null, null, 1]]); // because useEffect doesnt work i'll just hard code it based on the intial humber of edges
 
   const handleAddEdge = () => {
     setNumEdges(numEdges + 1);
@@ -33,7 +33,7 @@ function App() {
   }
 
 const setSampleGraph = () => {
-  setEdges([[0,1,0.7],[2,3,5],[3,0,4.5], [2,0,2.2], [0,3,2.5]]);
+  setEdges([['0','1','0.7'],['2','3','5'],['3','0','4.5'], ['2','0','2.2'], ['0','3','2.5']]);
   setNumEdges(6);
   setEdgeIndexes([1, 2, 3, 4, 5]);
 }
@@ -45,7 +45,7 @@ const setSampleGraph = () => {
   }
 
   const submit = async () => {
-    axios.post("http://localhost:5000/qaoa", {"edges": edges})
+    axios.post("https://maxcut-backend.herokuapp.com//qaoa", {"edges": edges})
     .then((response) => {
       console.log(response);
       setRes(response.data.maxcut)
