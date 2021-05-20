@@ -60,11 +60,11 @@ const setSampleGraph = () => {
     submit();
   }
 
-  const submit = async () => {
-    axios.post("http://maxcut-backend.herokuapp.com/qaoa", {"edges": edges})
+  const submit = () => {
+    axios.post("https://maxcut-backend.herokuapp.com/qaoa", {"edges": edges})
     .then((response) => {
       console.log(response);
-      setRes(response.data.maxcut)
+      response.data.maxcut ? setRes(response.data.maxcut) : setRes(response.data);
     })
     .catch((err) => {
       console.log(err);
@@ -80,7 +80,7 @@ const setSampleGraph = () => {
         <Navbar togglePopUpMaxcut={togglePopUpMaxcut} togglePopUpUse={togglePopUpUse}/> 
         <header>
           <h1>Find the maxcut of any graph with a <span className="theme">quantum computer</span></h1>
-          <p className="subtitle">The first webapp to run a quantum machine learning algorithm no-code</p>
+          <p className="subtitle">The first webapp that allows you to run a quantum machine learning algorithm no-code</p>
         </header>
         {isSampleGraph && <img src={sampleGraphLabelledNodes} alt="Visual depiction of sample graph"/>}
         <form className="form form-control">
