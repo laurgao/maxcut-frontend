@@ -61,7 +61,7 @@ const setSampleGraph = () => {
   }
 
   const submit = () => {
-    axios.post("https://maxcut-backend.herokuapp.com/qaoa", {"edges": edges})
+    axios.post("https://maxcut-backend-3-2lg3cbnfva-uc.a.run.app/qaoa", {"edges": edges})
     .then((response) => {
       console.log(response);
       response.data.maxcut ? setRes(response.data.maxcut) : setRes(response.data);
